@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+    {% for product in object.product.all %}
+        <tr>
+            <th>Produkt:</th>
+            <th>{{ product.name }}</th>
+        </tr>
+    {% endfor %}
+    <tr><th>Numer zamówienia:</th><th>{{ object.order_number }}</th></tr>
+    <tr><th>Dostawa:</th><th>{{ object.if_delivery }}</th></tr>
+    <tr><th>Sposób płatności:</th><th>{{ object.payment_method }}</th></tr>
+    </table>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://html5-templates.com/" />
+    <title>Responsive HTML5 Page Layout Template</title>
+    <meta name="description" content="Simple HTML5 Page layout template with header, footer, sidebar etc.">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'script.js' %}"></script>
+</head>
+
+<body>
+	<header>
+        <div id="logo">
+            <a href="{% url 'index' %}" style="text-decoration: None; color: #a50d0d; font-size: xxx-large; font-weight: 900;">Mar-Mur</a>
+        </div>
+	</header>
+	<section>
+        <nav>
+			<ul>
+                <li><a href="{% url 'index' %}">Strona główna</a></li>
+				<li><a href="{% url 'product_list' %}">Narzędzia</a>
+				<li><a href="{% url 'category_list' %}">Kategorie</a>
+                <li><a href="{% url 'producent_list' %}">Producenci</a>
+                <li><a href="{% url 'order_list' %}">Zamówienia</a>
+				<li><a href="{% url 'opinion_list' %}">Opinie</a>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'basket_list' %}">Koszyk</a>
+                {% endif %}
+			</ul>
+		</nav>
+        <div style="float:right;">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" style="color: black; text-decoration: None;"><b>logout</b></a>
+            {% else %}
+                <a href="{% url 'login' %}" style="color: black; text-decoration: None;"><b>login</b></a>
+                <a href="{% url 'signup' %}" style="color: black; text-decoration: None;"><b>registrated</b></a>
+            {% endif %}
+        </div>
+	</section>
+	<section id="pageContent">
+		<main role="main" style="min-height: 650px">
+            {% block content %}
+                <img src="{% static 'img/10.jpg' %}">
+            {% endblock%}
+		</main>
+		<aside>
+            <nav>
+                <ul style="text-align:right">
+                    <li><a href="{% url 'product_create' %}">Dodaj przedmiot</a></li>
+                    <li><a href="{% url 'category_create' %}">Dodaj kategorię</a></li>
+                    <li><a href="{% url 'producent_create' %}">Dodaj producenta</a></li>
+                    <li><a href="{% url 'order_create' %}">Dodaj zamówienie</a></li>
+                    <li><a href="{% url 'opinion_create' %}">Dodaj opinię</a></li>
+                </ul>
+            </nav>
+		</aside>
+	</section>
+	<footer>
+        <p style="text-align: center;">
+            Strone przygotował <i><b>Mariusz Śledź</b></i>
+        </p>
+	</footer>
+</body>
+</html>

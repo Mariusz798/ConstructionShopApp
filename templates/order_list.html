@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for object in object_list %}
+        <article>
+            {% for product in object.product.all %}
+                <p style="font-size: xx-large; font-weight: bold; color: #09003a;">{{ product.name }}</p>
+            {% endfor %}
+            <p style="color: darkblue; font-size: small; font-weight: bold; margin-top: 2px;">{{ object.order_number }}
+                <button onclick="location.href='{% url 'order_detail' object.id %}';" style="background-color: lightblue; border-radius: 50%; float: right;">Szczegóły</button>
+            </p>
+        </article>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for object in object_list %}
+        <article>
+          <p style="font-size: xx-large; font-weight: bold; color: #09003a;">{{ object.name }}</p>
+            <h5 style="color: gray; margin-top: 3px;">{{ object.price }} zł</h5>
+            <form method="post" action="{% url 'add_to_basket' %}">
+                {% csrf_token %}
+                <input type="hidden" value="{{ object.pk }}" name="product_id">
+                <input type="number" name="ilosc" min="1">
+                <input type='submit' value="Dodaj do koszyka">
+            </form>
+            <div style="float: right;">
+                <button onclick="location.href='{% url 'product_delete' object.id %}';" style="background-color: lightcoral; border-radius: 50%;">Usuń</button>
+                <button onclick="location.href='{% url 'product_modify' object.id %}';" style="background-color: lightyellow; border-radius: 50%;">Edytuj</button>
+                <button onclick="location.href='{% url 'product_detail' object.id %}';" style="background-color: lightblue; border-radius: 50%;">Szczegóły</button>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock %}

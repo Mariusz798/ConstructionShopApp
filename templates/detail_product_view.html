@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+    <tr><th>Nazwa:</th><th>{{ object.name }}</th></tr>
+    <tr><th>Producent:</th><th>{{ object.producent }}</th></tr>
+    <tr><th>Kategoria:</th><th>{{ object.category }}</th></tr>
+    <tr><th>Cena:</th><th>{{ object.price }}</th></tr>
+    </table>
+{% endblock %}

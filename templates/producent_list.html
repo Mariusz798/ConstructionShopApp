@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+    {% for object in object_list %}
+        <li><a href="{% url 'producent_modify' object.id %}">{{ object.name }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <div>
+    {% if page_obj > 1 %}
+        <p style="text-align: center;">
+            {% if page_obj.has_previous %}
+    {#            <a href="?page=1">&laquo; first</a>#}
+                <a href="?page={{ page_obj.previous_page_number }}">poprzednia</a>
+            {% endif %}
+
+            Strona <b>{{ page_obj.number }}</b> z <b>{{ page_obj.paginator.num_pages }}</b>.
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">następna</a>
+    {#            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>#}
+            {% endif %}
+        </p>
+    {% endif %}
+    </div>
+{% endblock %}

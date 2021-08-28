@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for object in object_list %}
+        <article>
+            {{ object.product }} <span style="margin-left: 50px;">{{ object.quantity }} szt.</span>
+            <button onclick="location.href='{% url 'basket_delete' object.id %}';" style="background-color: lightcoral; border-radius: 50%; float:right;">Usuń</button>
+        </article>
+    {% endfor %}
+{% endblock %}

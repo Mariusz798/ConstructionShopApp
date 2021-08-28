@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+    <ul>
+    {% for object in object_list %}
+        <tr>
+            <th style="text-align: left;">
+                <li>{{ object }}</li>
+            </th>
+            <td></td>
+            <td>
+                <button onclick="location.href='{% url 'category_modify' object.id %}';" style="background-color: lightyellow; border-radius: 50%; margin-left:140px;">Edytuj</button>
+                <button onclick="location.href='{% url 'category_delete' object.id %}';" style="background-color: lightcoral; border-radius: 50%;">Usuń</button>
+            </td>
+        </tr>
+    {% endfor %}
+    </ul>
+    </table>
+{% endblock %}
+
+
+
